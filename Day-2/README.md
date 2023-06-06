@@ -15,7 +15,7 @@ Width and height of Core and Die
 In the physical design flow, the first step is to define the height and width of the core and the die
 
 Netlist : A netlist describes the connectivity of electronic design.
-<img circuit>
+<img width="610" alt="img1circuit" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/03972162-ae32-4271-be16-81dacf13e5a0">
 
 - While defining the dimesions of the chip we are mostly dependent on the dimesion of the logic gates in the netlist.
 
@@ -23,12 +23,12 @@ Netlist : A netlist describes the connectivity of electronic design.
 - Wegive dimension to each cell and find its area, the sum of all the cell is total area.
 - If we try to club them together, the area covered by the combined cells is minimum area.
 
-<img combined>
+<img width="392" alt="img2comn" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/b2bd8dab-77f4-4774-9d58-c4afc23e5289">
 
-<img core>
+<img width="817" alt="core" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/d1380bf1-4316-45cb-8fd9-9b2580087efb">
 Core is section of the chip where the fundamental logic of the design is placed.
 
-<dieimage>
+<img width="885" alt="die" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/06f8a62a-1215-416a-92ca-bc64b1037f97">
 
                            Area occupied by the netlist
     Utilization factor = ------------------------------
@@ -66,7 +66,9 @@ We surround the cells by De-coupling capacitors. It is a capacitor with huge cha
 
 - So when ever there is a switching activity happening decoupling capacitor will send current to charge. So the amount the current the circiut need is supplied by this capacitor.
 
-<Image decouples capacitor>
+<img width="821" alt="decouple capacitor" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/2dedd743-85f6-485f-bc37-618b8227761a">
+<img width="742" alt="decouple capacitor1" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/645c2890-a358-429e-a97b-330bd1791e52">
+
 
 #### Power planning
 
@@ -75,11 +77,11 @@ When connecting from one preplace cell to the other, the power supply needs to c
 - Ground bounce refers to the undesired voltage fluctuation in the ground reference plane caused by the simultaneous switching of multiple digital signals. When a large number of gates or circuits switch from logic 0 to 1 or vice versa, it creates a momentary surge of current demand. This current flows through the power distribution network and generates voltage fluctuations due to the parasitic inductance and resistance of the power and ground connections which leads to it going to undefined states which cause it going to either "1" or "0" unpredictably.
 - when multiple capacitances in a circuit need to charge simultaneously, they collectively demand a significant amount of current from the power supply. This simultaneous current draw can lead to a phenomenon called voltage droop
 
-<image groundbounce>
-<image voltage droop>
+<img width="844" alt="groundbounce" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/a2cdfb7a-7d84-4c92-a8bd-256c552415f1">
+<img width="845" alt="voltagedroop" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/aebe8056-10ee-40cf-a465-01542b59b576">
 
 - Distributing this power source and having multiple power supplies may solve the above problems.
-<pinplac image>
+<img width="652" alt="pinplac" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/4fe432e2-3f88-4387-be7e-4841b405cc22">
 
 #### Pin placement and logical cell placement blockage
 
@@ -96,7 +98,7 @@ Path to view the different configuration and their default values
 then enter 
 
     less README.md
-<img readme>
+![readme](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/14ff794d-6d86-4764-a7ee-25626b03ea66)
 
  It has variable that can be set if we want in synthesis flow. 
 
@@ -104,7 +106,7 @@ These switches are set in .tcl files
 for example for the floor plan stage
 
     less floorplan.tcl
- <img variale>
+![setvar](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/788421c0-9b28-4558-97b6-8455593f600b)
 
 The highest priority for these defaults will be sky130A_sky130_fd_sc_hd_config.tcl, and then config.tcl, and then the tcl file inside the folder as shown above.
 
@@ -112,12 +114,12 @@ Now to run floorplan
 
     run_floorplan
 
-<img run floorplan>
+![runfloorplan](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/3e6b84ef-00f8-43fd-befc-b79ac4ff5c1f)
 
 #### Review floorplan files and steps to view floorplan
 
-<configtcl image>
-<sky130a tcl image>
+![configtcl](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/68c97131-f0f6-460d-8e35-3fa146cfcdd2)
+![sky130aconfig](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/426c82ae-ba03-41af-b5ea-32e323f354d1)
 
 Goto the address given below
 
@@ -127,7 +129,7 @@ and type
 
     less picorv32a.floorplan.def
 
-<die area image>
+![die area](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/9b611bfc-0dd1-4bf5-bfe5-e3578539dea0)
 
 we can see Die area, it is area of complete die, it shows upper right x value and upper right y value. Using this we can calculate area of die.
 
@@ -143,9 +145,9 @@ We can see actual floor plan in Magic
 - To zoom at any part firt do left mouse click and then right mouse click at the part where we want to zoom and then press Z.
 - To select anything take cursor there and press s.
 
-<image what>
+![what](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/1d65c2c3-09c7-456d-bcf1-c5447c0d97de)
 
-<image tapcell>
+![tapcell](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/ec4cb42e-5198-4f62-8000-3a4fe5a49dd1)
 
 Tapcells are meant to avoid the latchup conditions which occur in CMOS devices, they connect nwell to vdd and substrate to ground. These tapcells are diagonally equidistant, this value has also been set. The bottom left of the floorplan will have the standard cells
 
@@ -180,7 +182,7 @@ The main objective is reducing the wire length.
 
     run_placement
 
-<img placement>
+![placement img](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/25e9970e-b0c1-4c42-b0ac-7042603fd665)
 
 Go to the directory 
 
@@ -190,9 +192,9 @@ and enter command
 
     magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
 
-<image2 placement>
+![image 2 placement](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/ae07a8ce-d854-49cd-8a39-b44a5b6d7b56)
 Zoomed version of the image.
-<image3 placement>
+![image 3placement](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/c5033c0c-d68c-4240-b031-96c70439ed21)
 
 
 In the physical design flow of integrated circuits, the power-ground network is responsible for establishing a robust power distribution system and ensuring proper grounding. 
@@ -233,8 +235,8 @@ These steps are fed in together as a configuration file to a characterization so
     | slew_high_rise_thr   |  80% value |
     | slew_low_fall_thr    |  20% value |
     | slew_high_fall_thr   |  80% value |
-    | in_rise_thr	       |  50% value |
-    | in_fall_thr	       |  50% value |
+    | in_rise_thr	         |  50% value |
+    | in_fall_thr	         |  50% value |
     | out_rise_thr	       |  50% value |
     | out_fall_thr	       |  50% value |
 
@@ -249,113 +251,3 @@ Circuit design steps are very very important as they may cause negative delay wh
 #### Transition time 
     Transition time  = slew_high_rise_thr - slew_low_rise_thr
 
-
-# Day 3
-
-## Content
-- CMOS inverter ngspice simulations
-- Inception of Layout and CMOS Fabrication Process
-- SKY130 Tech File Labs
-### IO placer revision
-
-To change the configuration of how the IO pins are placed 
-
-    set ::env(FP_IO_MODE) 2
-
-<image11 configchang>
-
-### SPICE deck creation for CMOS inverter
-
-Lets say for the given circuit:
-<imaged3circuit>
-- output load calculated here is 10fF
-- W/L ratios 
-    PMOS: 0.375/0.25 u
-    NMOS: 0/375/0.25 u
-- PMOS Should be wider than the NMOS
-Spice deck
-1. Component connectivity - Connectivity of the Vdd, Vss,Vin, substrate.
-2. Component values - values of PMOS and NMOS, Output load, Input Gate Voltage, supply voltage.
-3. Identify Nodes
-4. Name Nodes - Nodes are required to define the SPICE Netlist.
-
-
-        M1 out in vdd vdd pmos W=0.375u L=0.25u
-
-        #drain gate source substrate
-
-        M2 out in 0 0 nmos W=0.375u L=0.25u
-        cload out 0 10f
-        Vdd vdd 0 2.5
-        Vin in 0 2.5
-        *** Simulation commands ***
-        .op
-        .dc Vin 0 2.5 0.05
-
-        *** include tsmc_025um_model.mod ***
-        .LIB "tsmc_025um_model.mod" CMOS_MODELS
-        .end
-
-The shape of wavefrom of PMOS and NMOS are same which tell us, that CMOS is very robust.
-
-Switching Threshold : Switching Threshold of a CMOS inverter is the point where the Vin = Vout on the DC Transfer characreristics. Here both the transistors are in saturation region.
-
-### Lab steps to git clone vsdstdcelldesign
-
-clone from the github repo 
-
-    git clone https://github.com/nickson-jose/vsdstdcelldesign.git
-
-    cd pdks/sky130A/libs.tech/magic/
-    cp sky130A.tech pwd
-
-    magic -T sky130A.tech sky130_inv.mag &
-
-
-& at the end makes the next prompt line free, otherwise magic keeps the prompt line busy. Once we run the magic command we get the layout of the inverter in the magic window.
-
-<image of inverter>
-
-
-#### CMOS Fabrication Process
-
-The CMOS fabrication process involves several steps that are essential for the production of CMOS (Complementary Metal-Oxide-Semiconductor) integrated circuits. Here is an overview of the 16-mask CMOS fabrication process, including key steps and their corresponding descriptions:
-
-- Substrate Selection:
-The first step in the CMOS fabrication process is selecting a suitable substrate, typically a P-type substrate, to serve as the foundation for the integrated circuit.
-
-- Active Region Creation:
-The active regions for the transistors are created by using Mask 1. This mask defines the areas where transistors will be fabricated.
-
-- Isolation:
-To isolate the active regions from each other, an isolation layer is formed. This is achieved by depositing an oxide layer (SiO2), followed by a layer of silicon nitride (Si3N4). A photoresist layer is then applied and patterned using photolithography. The patterned photoresist serves as a mask for etching the silicon nitride layer. Finally, the remaining photoresist is removed, and the structure is placed in an oxidation furnace, where the oxide layer grows in the exposed regions. This process is known as LOCOS (Local Oxidation of Silicon). The silicon nitride layer is stripped using hot phosphoric acid.
-
-- N-well and P-well Formation:
-N-well and P-well regions are formed separately to facilitate the fabrication of NMOS and PMOS transistors, respectively. Photoresist, masking, photolithography, and ion implantation techniques are employed to create the desired well structures. The P-well is formed by diffusing a p-type Boron material into the P-substrate, while the N-well is formed by diffusing an n-type Phosphorus material. The process of creating these wells is referred to as the "tub process" and involves high-temperature furnace processes to achieve the desired well depths.
-
-- Gate Formation:
-The gate is a crucial component of CMOS transistors, as it controls the threshold voltages that determine the transistor's on/off states. To form the gate, a layer of polysilicon is deposited, and photolithography techniques are employed to define the gate structure for both NMOS and PMOS transistors. The gate formation process considers parameters such as oxide capacitance and doping concentration.
-
-- Lightly Doped Drain (LDD) Formation:
-To mitigate the impact of hot electron effects and short channel effects, a lightly doped drain (LDD) region is formed. This involves additional ion implantation steps to introduce dopants in specific areas of the transistor structure.
-
-- Source and Drain Formation:
-A thin layer of oxide is added to protect the channel during subsequent implantation steps. Source and drain regions are formed through ion implantation, where n+ and p+ implants are performed using arsenic implantation and high-temperature annealing.
-
-- Local Interconnect Formation:
-The thin screen oxide is etched using a hydrofluoric (HF) solution. Local interconnects are then formed through a series of steps, including depositing titanium on the wafer using sputtering. Heating in a nitrogen (N2) ambient triggers a chemical reaction, resulting in the formation of low-resistance metal contacts (titanium silicon dioxide) for interconnect contacts. Titanium nitride is also formed and used for connections that need to be brought to the top for local communication. The titanium nitride layer is etched using RCA cleaning.
-
-- Higher Level Metal Formation:
-To achieve a planar surface for metal interconnects, chemical mechanical polishing (CMP) is performed. This involves doping silicon oxide with Boron or Phosphorus to polish the surface
-
-
-#### Lab steps to create std cell layout and extract spice netlist
-
-- To extract SPICE, in the tkcon window
-
-    extract all 
-    ext2spice cthresh 0 rthresh 0
-    ext2spice
-<image extracting image 1 and 2>
-
-<IMAGE CODE>
