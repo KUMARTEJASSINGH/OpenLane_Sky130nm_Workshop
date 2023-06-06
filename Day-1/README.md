@@ -28,6 +28,7 @@ Let's briefly discuss each steps takes place in Physical design:
 
 QFN-48
 Here QFN refers to Quad Flat No-leads, and number 48 indicates the package's pin count, The chip is at the center of the package and it is connected using wire bonds with the pins as shown in the figure.
+<img width="552" alt="imgw1" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/827b8f94-1fda-42e0-9328-d9e7a1c56d4e">
 
 Pads: Pads, also known as input/output (I/O) pads, are areas on the surface of an integrated circuit where external connections can be made. Pads provide a means of connecting the chip to the outside world, typically through wire bonding.
 
@@ -80,7 +81,8 @@ On June 30, 2020, Google with skywater released first open source PDK for the ma
 
 - Synthesis : Coverts RTL to circuit out of components from the standard cell library (SCL). Resultant circuit is described in HDL and referred to as gate level netlist.
 
-<image 2 here>
+<img width="707" alt="imgw2" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/5bebeed9-5e59-4840-acd6-9a675d8cf45a">
+
     
 - Floor/Power Planning : The objective here is to plan the silicon area and create robust partition.
     - Chip Floor-Planning : Partition the chip die between different system building blocks and place I/O Pads.
@@ -100,7 +102,7 @@ It is open-source and free.
 It started as an Open-Source Flow for True Open Source Tape-out Experiment.
 
 StriVe SoC Family
-<image 3 here>
+<img width="421" alt="imgw3" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/b1b13620-ecfd-47ca-8128-64fe68e07e6e">
 
 OpenLANE 
 The main goal is to produce a clean (no LVS and DRC violation) GDSll with no human intervention.
@@ -119,7 +121,7 @@ Opensource tools used for OpenLANE:
 - QFlow
 - ABC
 
-<image 4 here>
+<img width="485" alt="imgw4" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/fe23543a-0a0d-42e2-9add-cb938ff9b074">
 
 1. The process starts with RTL design, the RTL is fed to Yosys with the design constraints, Yosys converts the RTL into a logic circuit using generic components, this circuit can be optimized and mapped into library using abc.
 2. ABC has to be guided during the optimization, and guidance comes in the form of ABC strategies, OpenLANE comes with various strategies where some tragets least area and the other on best timing, this is called SYNTHESIS EXPLORATION.
@@ -142,6 +144,8 @@ Opensource tools used for OpenLANE:
 8. Antenna : When a metal wire segment is fabricated, it can act as antenna. It can collect charges which can damage the transistor gate that is connected to that wire. So we have two solutions:
 - Bridging : In this we bridge using top layer so we go upto the top layer and drop back to to the metal layer that has long wire segment.
 - Antenna diode : Insert the diode next to the transistor that is getting effected by this long wire.
+<img width="356" alt="imgw6" src="https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/08d1718f-1d28-4044-881f-b072d3bc96c9">
+
 9. As a preventive measure, a fake antenna diode is added and placed next to every cell during the placement stage of the OpenLANE ASIC flow. The fake antenna diode is a placeholder component that mimics the characteristics and dimensions of a real diode but does not have any actual functionality.After the placement and routing stages, MAGIC is utilized to perform antenna violation checks on the routed layout. When an antenna violation is detected on a cell input pin, the fake antenna diode placed next to that cell is replaced with a real diode.
 10. Sign off : Timing signoff involves interconnect rc extraction from the routed layout followed by STA performed by openSTA and reports timing.
 
@@ -166,7 +170,7 @@ Enter the directory mentioned above the type
 
     ./flow.tcl -interactive
 It runs the script in interactive mode
-<image>
+![openlaneinteractive](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/f549cb98-c297-4b2e-a906-679539328e0f)
 
 Now we require to import all the pacakages that we will require
     
@@ -180,20 +184,20 @@ It has 3 kind of files
 1. src file: Verilog file for RTL will be present and sdc information
 2. config.tcl - bypasses any configs already done into openLANE., i.e, many of the switches already have a default value. The below image shows the default values
 
- <img 2 config.tcl>
+ ![imgconfig tcl](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/0d7aeb9d-d01a-406c-898b-855c306e70b2)
 
 Going back to Open prompt
 before running synthesis, we need to prepare the design setup stage, we need to set file system specific to the floor
 
     prep -design picorv32a
 
-<Img 3 prep>
+![img3 prep](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/7fcaa61a-08cb-4a2d-9e4d-2c9bfdf6f03b)
 
 here in mergeLef.py step two LEF files are merged to one
 1. Techlef 
 2. lef (Cell lef).
 
-<img4>
+![img4](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/ccd3acd4-df66-4171-9e13-b588f8640a61)
 
 Here in tmp file we have the file merged.lef
 
@@ -201,7 +205,7 @@ To run synthesis
 
     run_synthesis
 
-<img4 final synthesis>
+![img4 final synthesis](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/4cdca34f-7dcc-4b58-8025-9badedcefea8)
 
 ### FLOP RATIO
 
@@ -218,8 +222,8 @@ Flop ratio : 0.10842968
 
 Flop count percentage: 10.8429
 
-<img5>
-<img6>
+![img5](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/4a37ab9d-0a83-4b7b-b4c2-9681adb60260)
+![img6](https://github.com/KUMARTEJASSINGH/OpenLane_Sky130nm_Workshop/assets/89102342/4897f4a9-06b8-4392-ba7d-a40845f03adc)
 
 ## OpenLANE Github
 
